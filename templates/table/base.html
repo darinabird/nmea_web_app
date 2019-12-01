@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPS DATA</title>
+</head>
+<body>
+<form action="" method="GET">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" />
+    </form>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>Время и Дата</td>
+        <td>Координаты</td>
+        <td>Высота над уровнем моря</td>
+        <td>Текущая скорость</td>
+    </tr>
+    {% for data in qs %}
+    <tr>
+        <td>{{data.id}}</td>
+        <td>{{data.time}} {{data.date}}</td>
+        <td>{{data.n_s}} {{data.latitude}} {{data.e_w}} {{data.longitude}}</td>
+        <td>{{data.height}}</td>
+        <td>{{data.speed}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
